@@ -13,6 +13,7 @@ declare const typeHandlers: {
     pnm: import("./interface").IImage;
     psd: import("./interface").IImage;
     svg: import("./interface").IImage;
+    tiff: import("./interface").IImage;
     webp: import("./interface").IImage;
 };
 export default typeHandlers;

@@ -1,4 +1,6 @@
 import type { ISizeCalculationResult, ToAsciiCallback } from './types/interface';
+import viewTiff from './viewTiffImage';
+import { isBigEndian } from './types/tiffHelpers';
 /**
  * get image size and type from a DataView of buffer
  *
@@ -17,5 +19,10 @@ export declare const imageSize: {
     (view: DataView, toAscii: ToAsciiCallback): ISizeCalculationResult;
     default: any;
 };
-export declare const libName = "image-size-view";
+export declare const detectImageType: {
+    (view: DataView, toAscii: ToAsciiCallback): "svg" | "icns" | "tiff" | "bmp" | "cur" | "dds" | "gif" | "ico" | "j2c" | "jp2" | "jpg" | "ktx" | "png" | "pnm" | "psd" | "webp" | undefined;
+    default: any;
+};
+export declare const isTiffBigEndian: typeof isBigEndian;
+export declare const viewTiffImage: typeof viewTiff;
 export default imageSize;
