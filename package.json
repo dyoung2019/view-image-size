@@ -45,7 +45,7 @@
     "ico",
     "cur"
   ],
-  "repository": "git://github.com/dyoung2019/image-size.git",
+  "repository": "git://github.com/dyoung2019/view-image-size.git",
   "author": "David Young <dyoung.2019.github@gmail.com>",
   "license": "MIT",
   "devDependencies": {
