@@ -1,24 +1,10 @@
 {
+  "extends": "./tsconfig-base.json",
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "commonjs",
-    "allowJs": false,
+    "module": "esnext",
+    "target": "esnext",
+    "outDir": "./dist/",
+    "declarationDir": "./dist/types",
     "declaration": true,
-    "outDir": "./dist",
-    "rootDir": "./lib",
-    "removeComments": false,
-    "strict": true,
-    "alwaysStrict": true,
-    "moduleResolution": "node"
-  },
-  "include": [
-    "lib/**/*"
-  ],
-  "typedocOptions": {
-    "excludeExternals": true,
-    "excludePrivate": true,
-    "excludeProtected": true,
-    "entryPoints": ["lib/index.ts"],
-    "out": "docs"
   }
 }
