@@ -1,6 +1,16 @@
 # view-image-size
 
-A in-browser module to get dimensions (i.e. width, height, type) of an image file (by using a DataView)
+[![NPM version](https://img.shields.io/npm/v/view-image-size.svg?style=flat)](https://www.npmjs.com/package/view-image-size)
+
+A in-browser module to get dimensions (i.e. width, height, type) of an image file (by using a DataView).
+
+common.js & es6 module supported
+
+## Installation
+
+```shell
+npm install view-image-size --save
+```
 
 ## Supported formats
 
@@ -19,19 +29,19 @@ A in-browser module to get dimensions (i.e. width, height, type) of an image fil
 * TIFF
 * WebP
 
-## Installation
-
-```shell
-npm install view-image-size --save
-```
-
 ## API
 
-````ts
+> Types
+
+````typescript
+export interface ISize {
+  width: number; 
+  height: number;
+}
 
 export interface ISizeCalculationResult {
-  width: number | undefined;
-  height: number | undefined;
+  width: number;
+  height: number;
   type: string;
   images?: ISize[];
 };
@@ -40,53 +50,135 @@ export interface ISizeCalculationResult {
 export type ToAsciiCallback = {
   (view: DataView, begin: number, end: number): string;
 };
+````
 
+> retrieve size from a DataView
+
+````typescript
 export function imageSize(
   view: DataView,
-  toAscii: ToAsciiCallback,
-): ISizeCalculationResult
+  toAscii: ToAsciiCallback
+): ISizeCalculationResult;
 
-/**
- * detect the image type
- *
- * @param {DataView} view - view of buffer
- * @param {function} toAscii - function to transform byte to ascii string
- * @returns {imageType | undefined} - returns image type (as string)
- **/
-export function detectImageType = (
+````
+
+> retrieve size of TIFF image (in a DataView) instead of loading the entire image into memory
+
+````typescript
+// 1) detect the image type
+export function detectImageType(
   view: DataView,
   toAscii: ToAsciiCallback,
-): imageType | undefined => {
+): string | undefined;
+
+// 2) Test if the TIFF is Big Endian or Little Endian
+export default function isTiffBigEndian(
+  view: DataView,
+  toAscii: ToAsciiCallback,
+  offset: number,
+): boolean;
+
+// 3) Retrieve size by stepping thru each IFD directory at a time
+export default function viewTiffImage(
+  isBigEndian: boolean,
+  adjust: (position: number, minimumSize: number) => DataView
+): ISizeCalculationResult
 
 ````
 
 ## Examples 
 
-### Node
+### Node 
 
-````js
-const sizeOf = require('view-image-size');
+>  Example 1 (imageSize / es6)
 
+````typescript
+import imageSize from 'view-image-size';
 
+export default function toAscii(view: DataView, begin: number, end: number): string {
+  return Buffer.from(view.buffer).toString('ascii', begin, end);
+}
 
-
-````
-
-### Web
-
-````js
-
-````
-
-#### Snowpack
-
-````js
+// load image into ArrayBuffer
+const view = new DataView( ... );
+const actual = imageSize(view, toAscii);
 
 ````
 
+>  Example 2 (tiff / es6)
+
+````typescript
+import { 
+  imageSize, 
+  detectImageType,
+  isTiffBigEndian
+} from 'view-image-size';
+
+const toAscii = (view: DataView, begin: number, end: number) :string => {
+  return Buffer.from(view.buffer).toString('ascii', begin, end);
+}
+
+const adjustView = (position: number, minimumSize: number): DataView => {
+  return setupView(testFilePath, 1024, position);
+}
+
+const view = new DataView( ... );
+const imageType = detectImageType(view, toAscii);
+if (imageType === 'tiff') {
+  const offset = 0
+  const isBigEndian = isTiffBigEndian(view, toAscii ,offset);
+
+  // get image size
+  const size = viewTiffImage(isBigEndian, adjustView);
+}
+
+````
+
+### In-browser
+
+> Html
+
+````html
+<div class="output-panel"></div>
+````
+
+> JS Script 
+````js
+const outputPanel = document.querySelector('.output-panel');
+
+const decoder = new TextDecoder('ascii');
+const toAscii = (view: DataView, begin: number, end: number) => {
+  const segment = view.buffer.slice(begin, end);
+  return decoder.decode(segment);
+}
+
+function getImageResponse(imgPath) {
+  let myRequest = new Request(imgPath);
+
+  fetch(myRequest)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.arrayBuffer();
+  })
+  .then(arrayBuf => {
+    const sizeOfImage = () => {
+      const dv = new DataView(arrayBuf);
+      return imageSize(dv, toAscii);
+    }
+
+    const output = sizeOfImage();
+    outputPanel.textContent = JSON.stringify(output);
+  });
+}
+````
+
+## License
+
+MIT License
 
 ## Credits
 
 fork of [image-size](https://github.com/image-size/image-size)
 
-## [Contributors](Contributors.md)
