@@ -82,7 +82,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+# dist
 
 # Gatsby files
 .cache/
@@ -122,5 +122,5 @@ node_modules
 yarn-debug.log
 yarn-error.log
 .nyc_output
-dist/
 docs/
+

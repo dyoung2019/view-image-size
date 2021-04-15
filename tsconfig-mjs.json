@@ -6,8 +6,8 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "outDir": "./lib/mjs",
-    "declarationDir": "./lib/types",
+    "outDir": "./lib",
+    "declarationDir": "./types",
     "declaration": true,
   }
 }

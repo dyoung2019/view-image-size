@@ -2,28 +2,30 @@
   "name": "view-image-size",
   "exports": {
     ".": {
-      "import": "./lib/mjs/index.js",
-      "require": "./lib/cjs/index.js"
+      "import": "./lib/index.js",
+      "require": "./dist/index.js"
     }
   },
-  "types": "./lib/types/index.d.ts",
+  "types": "./types/index.d.ts",
   "version": "1.0.1",
   "description": "fork of get dimensions of an image file",
   "files": [
-    "*/lib/cjs/*",
-    "*/lib/mjs/*",
-    "*/lib/types/*"
+    "dist/*",
+    "lib/**",
+    "types/*"
   ],
   "scripts": {
-    "build": "npm run build:es6 && npm run build:cjs",
+    "build": "npm run build:es6 && npm run build:wp && npm run deploy:cjs",
+    "build:wp": "webpack",
     "build:es6": "tsc -p tsconfig-mjs.json && node ./deploy/copy-mjs.js",
-    "build:cjs": "tsc -p tsconfig-cjs.json && node ./deploy/copy-cjs.js",
+    "deploy:cjs": "node ./deploy/copy-cjs.js",
     "format": "prettier --write \"src/**/*.{ts,js}\"",
     "lint": "prettier --check \"src/**/*.{ts,js}\"",
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
-    "clean": "npm run clean:es6 && npm run clean:cjs",
-    "clean:es6": "tsc --build --clean tsconfig-mjs.json && node ./deploy/delete-mjs.js",
-    "clean:cjs": "tsc --build --clean tsconfig-cjs.json && node ./deploy/delete-cjs.js"
+    "clean": "npm run clean:es6 && npm run clean:lib",
+    "clean:lib": "node ./deploy/delete-lib.js",
+    "clean:es6": "tsc --build --clean tsconfig-mjs.json",
+    "clean:cjs": "tsc --build --clean tsconfig-cjs.json"
   },
   "keywords": [
     "image",
@@ -56,6 +58,11 @@
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "ts-jest": "^26.5.4",
-    "typescript": "^4.2.3"
+    "ts-loader": "^8.1.0",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
+    "typescript": "^4.2.4",
+    "webpack": "^5.33.2",
+    "webpack-clean": "^1.2.5",
+    "webpack-cli": "^4.6.0"
   }
 }
