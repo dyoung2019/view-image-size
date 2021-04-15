@@ -1,8 +1,6 @@
-import type { ToAsciiCallback } from './interface';
 export declare type TiffTagLookup = {
     [key: number]: number;
 };
-export declare function isBigEndian(view: DataView, toAscii: ToAsciiCallback, offset: number): boolean;
 export declare function getIdfOffsetLocation(): number;
 export declare function getIdfOffset(view: DataView, isBigEndian: boolean, offset?: number): number;
 export declare function getNoOfIdfEntries(view: DataView, offset: number, isBigEndian: boolean): number;

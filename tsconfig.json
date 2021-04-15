@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig-base.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "outDir": "./dist/",
+    "declarationDir": "./dist/types",
+    "declaration": true,
+  }
+}

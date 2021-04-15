@@ -1,23 +1,6 @@
 import { readUInt16, readUInt32 } from '../readUInt';
-import type { ToAsciiCallback } from './interface';
 
 export type TiffTagLookup = { [key: number]: number };
-
-// Test if the TIFF is Big Endian or Little Endian
-export function isBigEndian(
-  view: DataView,
-  toAscii: ToAsciiCallback,
-  offset: number,
-): boolean {
-  const signature = toAscii(view, offset, 2);
-  if ('II' === signature) {
-    return false;
-  } else if ('MM' === signature) {
-    return true;
-  } else {
-    throw new TypeError(`Tiff endian error - ${signature}`);
-  }
-}
 
 const TIFF_FILE_DEFAULT = 4;
 export function getIdfOffsetLocation(): number {

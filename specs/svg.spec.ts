@@ -1,6 +1,6 @@
-import imageSize from '../src/index';
+import { imageSize } from '../src/index';
 import toAscii from './toAscii';
-import detector from '../src/detectImageType';
+import detectImageType from '../src/detectImageType';
 import setupView from './setupView'
 
 describe('svg test files', () => {
@@ -97,7 +97,7 @@ describe('svg test files', () => {
   describe.each(testCases)('%s', (testFilePath, bufferSize, imageType, expected) => {
     test('imageType', () => {
       const view = setupView(testFilePath, bufferSize);
-      const type = detector(view, toAscii);
+      const type = detectImageType(view, toAscii);
       expect(type).toBe(imageType)
     })
 

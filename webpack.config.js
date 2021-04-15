@@ -1,4 +1,3 @@
-var WebpackCleanPlugin = require('webpack-clean');
 const path = require('path');
 
 module.exports = {

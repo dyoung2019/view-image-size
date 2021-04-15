@@ -7,8 +7,4 @@ import type { ToAsciiCallback } from './types/interface';
  * @param {function} toAscii - function to transform byte to ascii string
  * @returns {imageType | undefined} - returns image type (as string)
  **/
-declare const detectType: {
-    (view: DataView, toAscii: ToAsciiCallback): imageType | undefined;
-    default: any;
-};
-export default detectType;
+export default function detectImageType(view: DataView, toAscii: ToAsciiCallback): imageType | undefined;
