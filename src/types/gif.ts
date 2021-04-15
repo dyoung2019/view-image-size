@@ -2,6 +2,7 @@ import type { IImage } from './interface';
 import { readUInt16LE } from '../readUInt';
 
 const gifRegexp = /^GIF8[79]a/;
+/** @internal */
 export const GIF: IImage = {
   validate(buffer, toAscii) {
     const signature = toAscii(buffer, 0, 6);

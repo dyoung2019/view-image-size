@@ -35,4 +35,5 @@ const typeHandlers = {
   webp: WEBP,
 };
 
+/** @internal */
 export default typeHandlers;

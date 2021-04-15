@@ -7,6 +7,7 @@ const pngImageHeaderChunkName = 'IHDR';
 // Used to detect "fried" png's: http://www.jongware.com/pngdefry.html
 const pngFriedChunkName = 'CgBI';
 
+/** @internal */
 export const PNG: IImage = {
   validate(buffer, toAscii) {
     if (pngSignature === toAscii(buffer, 1, 8)) {

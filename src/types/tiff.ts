@@ -1,8 +1,7 @@
-import { readUInt16, readUInt32 } from '../readUInt';
 import toHexadecimal from '../toHexadecimal';
 import type { IImage } from './interface';
+import isTiffBigEndian from '../isTiffBigEndian';
 import {
-  isBigEndian as isTiffBigEndian,
   getIdfOffset as getTiffIdfOffset,
   extractIdfEntry as extractTiffIdfEntry,
   intoResult as intoTiffResult,
@@ -21,6 +20,7 @@ const signatures = [
   // '4d4d002a', // BigTIFF > 4GB. currently not supported
 ];
 
+/** @internal */
 export const TIFF: IImage = {
   validate(view, toAscii) {
     const fileSignature = toHexadecimal(view, 0, 4);

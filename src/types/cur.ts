@@ -3,6 +3,7 @@ import { ICO } from './ico';
 import { readUInt16LE } from '../readUInt';
 
 const TYPE_CURSOR = 2;
+/** @internal */
 export const CUR: IImage = {
   validate(buffer) {
     if (readUInt16LE(buffer, 0) !== 0) {

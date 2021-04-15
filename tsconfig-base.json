@@ -5,9 +5,7 @@
     "./dist/*",
     "./archive/*",
     "./lib/**/*",
-    "./types/**/",
-    "snowpack.config.cjs",
-    "web-test-runner.config.cjs"
+    "./types/**/"
   ],
   "compilerOptions": {
     "types": ["node", "jest"],

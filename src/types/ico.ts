@@ -50,6 +50,7 @@ function getImageSize(buffer: DataView, imageIndex: number): ISize {
   };
 }
 
+/** @internal */
 export const ICO: IImage = {
   validate(buffer) {
     if (readUInt16LE(buffer, 0) !== 0) {

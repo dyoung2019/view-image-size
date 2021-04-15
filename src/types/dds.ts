@@ -1,6 +1,7 @@
 import type { IImage } from './interface';
 import { readUInt32LE } from '../readUInt';
 
+/** @internal */
 export const DDS: IImage = {
   validate(buffer) {
     return readUInt32LE(buffer, 0) === 0x20534444;

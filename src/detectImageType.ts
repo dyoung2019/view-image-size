@@ -11,10 +11,10 @@ import { specificHandlers } from './types/specificHandlers';
  * @param {function} toAscii - function to transform byte to ascii string
  * @returns {imageType | undefined} - returns image type (as string)
  **/
-const detectType = (
+export default function detectImageType(
   view: DataView,
   toAscii: ToAsciiCallback,
-): imageType | undefined => {
+): imageType | undefined {
   const detectionByFirstByte = (): [
     found: boolean,
     handleType: imageType | undefined,
@@ -49,6 +49,3 @@ const detectType = (
     return loopThruSpecificHandlers();
   }
 };
-
-detectType.default = detectType;
-export default detectType;

@@ -63,6 +63,7 @@ const handlers: { [type: string]: Handler } = {
   },
 };
 
+/** @internal */
 export const PNM: IImage = {
   validate(buffer, toAscii) {
     const signature = toAscii(buffer, 0, 2);

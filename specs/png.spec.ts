@@ -1,6 +1,6 @@
 import imageSize from '../src/index';
 import toAscii from './toAscii';
-import detector from '../src/detectImageType';
+import detectImageType from '../src/detectImageType';
 import setupView from './setupView'
 
 describe('png mjs test files', () => {
@@ -29,7 +29,7 @@ describe('png mjs test files', () => {
     const view = setupView(testFilePath, 1024);
 
     test('imageType', () => {
-      const type = detector(view, toAscii);
+      const type = detectImageType(view, toAscii);
       expect(type).toBe(imageType)
     })
 

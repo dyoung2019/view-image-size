@@ -132,6 +132,7 @@ const readMarker = (view: DataView, index: number): number => {
   return readUInt16BE(view, index);
 };
 
+/** @internal */
 export const JPG: IImage = {
   validate(buffer: DataView) {
     const markerShort = validateJPG(buffer); // SOI
