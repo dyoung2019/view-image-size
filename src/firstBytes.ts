@@ -17,4 +17,5 @@ const firstBytes: { [byte: number]: imageType } = {
   0xff: 'jpg',
 };
 
+/** @internal */
 export default firstBytes;

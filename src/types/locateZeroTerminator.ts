@@ -1,3 +1,4 @@
+/** @internal */
 export default function locateZeroTerminator(
   view: DataView,
   offset: number,

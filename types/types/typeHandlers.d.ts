@@ -16,4 +16,4 @@ declare const typeHandlers: {
     tiff: import("./interface").IImage;
     webp: import("./interface").IImage;
 };
-export default typeHandlers;
+export {};

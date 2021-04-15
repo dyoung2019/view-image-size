@@ -91,6 +91,7 @@ function toUtf8String(view: DataView): string {
   return decoder.decode(view);
 }
 
+/** @internal */
 export const SVG: IImage = {
   validate(buffer) {
     const str = toUtf8String(buffer);

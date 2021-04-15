@@ -13,6 +13,7 @@ import type {
  * @param {function} toAscii - function to transform byte to ascii string
  * @returns {ISizeCalculationResult}
  */
+/** @internal */
 export default function lookup(
   type: imageType | undefined,
   view: DataView,

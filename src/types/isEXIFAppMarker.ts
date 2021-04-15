@@ -15,6 +15,7 @@ const compareEXIFIdentifier = (view: DataView, offset: number) => {
   );
 };
 
+/** @internal */
 export default function isEXIFAppMarker(
   view: DataView,
   shortMarker: number,

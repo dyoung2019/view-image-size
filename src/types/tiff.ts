@@ -20,6 +20,7 @@ const signatures = [
   // '4d4d002a', // BigTIFF > 4GB. currently not supported
 ];
 
+/** @internal */
 export const TIFF: IImage = {
   validate(view, toAscii) {
     const fileSignature = toHexadecimal(view, 0, 4);

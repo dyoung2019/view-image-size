@@ -4,6 +4,7 @@
     "src"
   ],  
   "compilerOptions": {
+    "stripInternal": true,
     "target": "esnext",
     "module": "esnext",
     "outDir": "./lib",

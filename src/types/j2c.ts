@@ -2,6 +2,7 @@ import type { IImage } from './interface';
 import { readUInt32BE } from '../readUInt';
 import toHexadecimal from '../toHexadecimal';
 
+/** @internal */
 export const J2C: IImage = {
   validate(buffer) {
     // TODO: this doesn't seem right. SIZ marker doesnt have to be right after the SOC

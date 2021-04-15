@@ -32,6 +32,7 @@ function calculateLossy(buffer: DataView, offset: number): ISize {
   };
 }
 
+/** @internal */
 export const WEBP: IImage = {
   validate(buffer, toAscii) {
     const riffHeader = 'RIFF' === toAscii(buffer, 0, 4);

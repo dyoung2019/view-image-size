@@ -3,6 +3,7 @@ import { readUInt32LE } from '../readUInt';
 
 const SIGNATURE = 'KTX 11';
 
+/** @internal */
 export const KTX: IImage = {
   validate(buffer: DataView, toAscii) {
     return SIGNATURE === toAscii(buffer, 1, 7);

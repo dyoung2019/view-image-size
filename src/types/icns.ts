@@ -82,6 +82,7 @@ function getImageSize(type: string): ISize {
   return { width: size, height: size, type };
 }
 
+/** @internal */
 export const ICNS: IImage = {
   validate(buffer, toAscii) {
     return 'icns' === toAscii(buffer, 0, 4);

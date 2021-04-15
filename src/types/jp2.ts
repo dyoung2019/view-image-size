@@ -29,6 +29,7 @@ const parseIHDR = (box: DataView, offset: number): ISize => {
   };
 };
 
+/** @internal */
 export const JP2: IImage = {
   validate(buffer) {
     const signature = toHexadecimal(buffer, 4, 8);

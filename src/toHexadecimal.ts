@@ -1,3 +1,4 @@
+/** @internal */
 export default function toHexadecimal(
   view: DataView,
   begin: number,
