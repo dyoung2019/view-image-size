@@ -1,6 +1,6 @@
 # view-image-size
 
-[![NPM version](https://img.shields.io/npm/v/view-image-size.svg?style=flat)](https://www.npmjs.com/package/view-image-size)
+[![npm version](https://badge.fury.io/js/view-image-size.svg)](https://badge.fury.io/js/view-image-size)
 
 A in-browser module to get dimensions (i.e. width, height, type) of an image file (by using a DataView).
 
