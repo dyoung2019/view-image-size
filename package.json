@@ -4,8 +4,13 @@
     ".": "./dist/index.js",
     "./es6": "./lib/index.js"
   },
-  "types": "./types/index.d.ts",
-  "version": "2.1.0",
+  "typesVersions": {
+    "*": { 
+      ".": ["./types/index.d.ts"],
+      "es6": ["./types/index.d.ts"]
+    }
+  },
+  "version": "2.1.1",
   "description": "An in-browser module to get dimensions (i.e. width, height, type) of an image file (by using a DataView).",
   "files": [
     "dist/*",
