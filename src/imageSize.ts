@@ -19,7 +19,6 @@ import detectImageType from './detectImageType.js';
  *  }
  * } image size
  */
-/** @internal */
 export default function imageSize(
   view: DataView,
   toAscii: ToAsciiCallback,

@@ -5,6 +5,7 @@
 An in-browser module to get dimensions (i.e. width, height, type) of an image file (by using a DataView).
 
 common.js & es6 module supported
+node v12.7.0 (vscode) is required
 
 ## Installation
 
