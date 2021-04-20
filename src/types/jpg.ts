@@ -3,12 +3,12 @@
 // with a maximum size of 4096 bytes. so if the SOF marker is outside
 // if this range we can't detect the file size correctly.
 
-import type { IImage, ISize, ToAsciiCallback } from './interface';
-import { readUInt16, readUInt32, readUInt16BE } from '../readUInt';
-import toHexadecimal from '../toHexadecimal';
-import validateJPG from './validateJPG';
-import readJpgBlockLength from './readJpgBlockLength';
-import isEXIFAppMarker from './isEXIFAppMarker';
+import type { IImage, ISize, ToAsciiCallback } from './interface.js';
+import { readUInt16, readUInt32, readUInt16BE } from '../readUInt.js';
+import toHexadecimal from '../toHexadecimal.js';
+import validateJPG from './validateJPG.js';
+import readJpgBlockLength from './readJpgBlockLength.js';
+import isEXIFAppMarker from './isEXIFAppMarker.js';
 
 const EXIF_MARKER = '45786966';
 const APP1_DATA_SIZE_BYTES = 2;

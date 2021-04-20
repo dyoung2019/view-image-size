@@ -1,5 +1,5 @@
-import typeHandlers from './types/typeHandlers';
-import type { imageType } from './types/imageType';
+import typeHandlers from './types/typeHandlers.js';
+import type { imageType } from './types/imageType.js';
 import type {
   ISizeCalculationResult,
   ToAsciiCallback,

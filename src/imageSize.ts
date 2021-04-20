@@ -1,9 +1,9 @@
 import type {
   ISizeCalculationResult,
   ToAsciiCallback,
-} from './types/interface';
-import lookup from './lookup';
-import detectImageType from './detectImageType';
+} from './types/interface.js';
+import lookup from './lookup.js';
+import detectImageType from './detectImageType.js';
 
 /**
  * get image size and type from a DataView of buffer
@@ -20,7 +20,7 @@ import detectImageType from './detectImageType';
  * } image size
  */
 /** @internal */
-export default function sizeOf(
+export default function imageSize(
   view: DataView,
   toAscii: ToAsciiCallback,
 ): ISizeCalculationResult {

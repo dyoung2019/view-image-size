@@ -1,8 +1,8 @@
-import firstBytes from './firstBytes';
-import type { imageType } from './types/imageType';
-import typeHandlers from './types/typeHandlers';
-import type { ToAsciiCallback } from './types/interface';
-import { specificHandlers } from './types/specificHandlers';
+import firstBytes from './firstBytes.js';
+import type { imageType } from './types/imageType.js';
+import typeHandlers from './types/typeHandlers.js';
+import type { ToAsciiCallback } from './types/interface.js';
+import { specificHandlers } from './types/specificHandlers.js';
 
 /**
  * detect the image type

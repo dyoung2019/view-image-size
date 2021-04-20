@@ -1,5 +1,5 @@
-import type { IImage } from './interface';
-import { readUInt32BE } from '../readUInt';
+import type { IImage } from './interface.js';
+import { readUInt32BE } from '../readUInt.js';
 
 const pngSignature = 'PNG\r\n\x1a\n';
 const pngImageHeaderChunkName = 'IHDR';

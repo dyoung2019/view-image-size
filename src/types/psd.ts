@@ -1,5 +1,5 @@
-import type { IImage } from './interface';
-import { readUInt32BE } from '../readUInt';
+import type { IImage } from './interface.js';
+import { readUInt32BE } from '../readUInt.js';
 
 /** @internal */
 export const PSD: IImage = {

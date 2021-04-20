@@ -2,27 +2,22 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: './src/index.ts',
+  entry: './build/index.js',
   devtool: 'source-map',
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-        options: { 
-          configFile: 'tsconfig-cjs.json',
-          onlyCompileBundledFiles: true
-        }
-      },
-    ],
+  stats: {
+    errorDetails: true
   },
   resolve: {
-    extensions: ['.ts'],
+    extensions: ['.js'],
   },  
+  optimization: {
+    minimize: true,
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'index.js',
-    clean: true
+    library: {
+      type: 'commonjs2',
+    }
   },
 };

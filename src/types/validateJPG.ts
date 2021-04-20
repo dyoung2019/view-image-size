@@ -1,4 +1,4 @@
-import toHexadecimal from '../toHexadecimal';
+import toHexadecimal from '../toHexadecimal.js';
 
 /** @internal */
 export default function validateJPG(view: DataView): string {

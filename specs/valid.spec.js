@@ -1,14 +1,13 @@
-import { sync as globSync } from 'glob'
-import { extname, resolve } from 'path'
-import { readFileSync } from 'fs'
-import imageSize from '../src/index';
-import detector from '../src/detectImageType';
-import type { ISizeCalculationResult } from '../src/types/interface'
-import toAscii from './toAscii';
+const { sync: globSync } = require('glob');
+const { extname, resolve } = require('path');
+const { readFileSync } = require('fs')
+const {default: imageSize} = require('../build/imageSize.js');
+const {default: detector} = require('../build/detectImageType.js');
+const toAscii = require('./toAscii');
 
 const bufferSize = 8192
 
-const sizes: { [key: string]: any} = {
+const sizes = {
   default: {
     width: 123,
     height: 456
@@ -109,9 +108,9 @@ describe('Valid images', () => {
     .filter(file => extname(file) !== '.ico')
 
   validFiles.forEach(file => describe(file, () => {
-    let type: string | undefined
-    let bufferDimensions: ISizeCalculationResult
-    let asyncDimensions: ISizeCalculationResult
+    let type;
+    let bufferDimensions;
+    let asyncDimensions;
 
     beforeEach(done => {
       const filepath = resolve(file)
@@ -131,7 +130,7 @@ describe('Valid images', () => {
     })
 
     it('should return correct size for ' + file, () => {
-      const expected = sizes[file as keyof typeof sizes] || sizes.default
+      const expected = sizes[file] || sizes.default
       expect(asyncDimensions.width).toEqual(expected.width)
       expect(asyncDimensions.height).toEqual(expected.height)
       if (asyncDimensions.images) {

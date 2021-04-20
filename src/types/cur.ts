@@ -1,6 +1,6 @@
-import type { IImage } from './interface';
-import { ICO } from './ico';
-import { readUInt16LE } from '../readUInt';
+import type { IImage } from './interface.js';
+import { ICO } from './ico.js';
+import { readUInt16LE } from '../readUInt.js';
 
 const TYPE_CURSOR = 2;
 /** @internal */

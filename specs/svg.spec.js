@@ -1,19 +1,13 @@
-import { imageSize } from '../src/index';
-import toAscii from './toAscii';
-import detectImageType from '../src/detectImageType';
-import setupView from './setupView'
+const toAscii = require('./toAscii');
+const {default: detectImageType} = require('../build/detectImageType.js');
+const setupView = require('./setupView');
+const {default: imageSize} = require('../build/imageSize.js');
 
 describe('svg test files', () => {
   // Inputs - fileName, path, 
   // Outputs - ... imageType, dims
-  type SVGTestElement = [
-    testFilePath: string,
-    bufferSize: number,
-    imageType: string,
-    result: any,
-  ]
 
-  const testCases: SVGTestElement[]  = [
+  const testCases  = [
     [
       "specs/images/valid/svg/exponent-width-height.svg",
       1024,

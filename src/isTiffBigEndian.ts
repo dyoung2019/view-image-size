@@ -1,6 +1,6 @@
 import type {
   ToAsciiCallback
-} from './types/interface';
+} from './types/interface.js';
 
 // Test if the TIFF is Big Endian or Little Endian
 export default function isTiffBigEndian(

@@ -1,5 +1,5 @@
-import { readUInt16BE, readUInt32BE } from '../readUInt';
-import type { ToAsciiCallback } from './interface';
+import { readUInt16BE, readUInt32BE } from '../readUInt.js';
+import type { ToAsciiCallback } from './interface.js';
 
 const EXIF_MARKER_HI_UINT32_BE = 1165519206;
 const EXIF_MARKER_LO_UINT16_BE = 0;

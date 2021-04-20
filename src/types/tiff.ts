@@ -1,6 +1,6 @@
-import toHexadecimal from '../toHexadecimal';
-import type { IImage } from './interface';
-import isTiffBigEndian from '../isTiffBigEndian';
+import toHexadecimal from '../toHexadecimal.js';
+import type { IImage } from './interface.js';
+import isTiffBigEndian from '../isTiffBigEndian.js';
 import {
   getIdfOffset as getTiffIdfOffset,
   extractIdfEntry as extractTiffIdfEntry,
@@ -10,8 +10,8 @@ import {
   endIndexForIdf as endIndexForTiffIdf,
   getStrideForIdf as getStrideForTiffIdf,
   getIdfOffsetLocation as getTiffIdfOffsetLocation,
-} from './tiffHelpers';
-import type { TiffTagLookup } from './tiffHelpers';
+} from './tiffHelpers.js';
+import type { TiffTagLookup } from './tiffHelpers.js';
 
 const signatures = [
   // '492049', // currently not supported
