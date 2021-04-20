@@ -1,33 +1,20 @@
-import { 
-  detectImageType,
-  isTiffBigEndian
- } from '../src/index';
-import toAscii from './toAscii';
-import setupView from './setupView';
-import { TIFF } from '../src/types/tiff';
-import type { TiffTagLookup } from '../src/types/tiffHelpers';
-import viewTiffImage from '../src/viewTiffImage';
-import { 
-  getIdfOffset, 
-  beginIndexForIdf,
-  getNoOfIdfEntries,
-  endIndexForIdf,
-  getStrideForIdf,
-  extractIdfEntry
-} from '../src/types/tiffHelpers'
+const toAscii = require('./toAscii');
+const {default: detectImageType} = require('../build/detectImageType.js');
+const setupView = require('./setupView');
+const {TIFF: tiff} = require('../build/types/tiff');
+const {default: isTiffBigEndian} = require('../build/isTiffBigEndian');
+const {default: viewTiffImage} = require('../build/viewTiffImage');
+const th = require('../build/types/tiffHelpers');
+    // getIdfOffset, 
+    // beginIndexForIdf,
+    // getNoOfIdfEntries,
+    // endIndexForIdf,
+    // getStrideForIdf,
+    // extractIdfEntry
+
 
 describe('tiff file test', () => {
-  type TiffTestElement = [
-    testFilePath: string,
-    bufferSize: number,
-    imageType: string,
-    isBigEndian: boolean,
-    idfOffset: number,
-    noOfEntries: number,
-    result: any,
-  ]
-
-  const testCases: TiffTestElement[]  = [
+  const testCases = [
     [
       "specs/images/valid/tiff/big-endian.tiff",
       1024,
@@ -66,7 +53,7 @@ describe('tiff file test', () => {
 
     test('validate', () => {
       const view = setupView(testFilePath, bufferSize);
-      const actual = TIFF.validate(view, toAscii);
+      const actual = tiff.validate(view, toAscii);
       expect(actual).toEqual(true);
     })
 
@@ -78,31 +65,31 @@ describe('tiff file test', () => {
 
     test('isOffset', () => {
       const view = setupView(testFilePath, 1024);
-      const actual = getIdfOffset(view, isBigEndian);
+      const actual = th.getIdfOffset(view, isBigEndian);
       expect(actual).toEqual(idfOffset);
     })
 
     test('noOfEntries', () => {
-      const tags: TiffTagLookup = {}
+      const tags = {}
       const view = setupView(testFilePath, 1024, idfOffset);
       
-      const actual = getNoOfIdfEntries(view, 0, isBigEndian);
+      const actual = th.getNoOfIdfEntries(view, 0, isBigEndian);
 
       expect(actual).toEqual(noOfEntries);
     });
 
     describe('single loop', () => {
-      const tags: TiffTagLookup = {}
+      const tags = {}
       const view = setupView(testFilePath, 1024, idfOffset);
       
       const doLoop  = () => {
         const zeroOffset = 0
-        const begin = beginIndexForIdf(zeroOffset);
-        const end = endIndexForIdf(zeroOffset, noOfEntries);
-        const stride = getStrideForIdf();
+        const begin = th.beginIndexForIdf(zeroOffset);
+        const end = th.endIndexForIdf(zeroOffset, noOfEntries);
+        const stride = th.getStrideForIdf();
 
         for (let i = begin; i < end; i += stride) {
-          extractIdfEntry(tags, view, i, isBigEndian);
+          th.extractIdfEntry(tags, view, i, isBigEndian);
         }
       }
       
@@ -111,7 +98,7 @@ describe('tiff file test', () => {
       })
     });
 
-    const adjustView = (position: number, minimumSize: number): DataView => {
+    const adjustView = (position, minimumSize) => {
       return setupView(testFilePath, 1024, position);
     }
 

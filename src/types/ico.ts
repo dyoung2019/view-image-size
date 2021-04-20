@@ -3,8 +3,8 @@ import type {
   ISize,
   ISizeCalculationResult,
   ToAsciiCallback,
-} from './interface';
-import { readUInt16LE } from '../readUInt';
+} from './interface.js';
+import { readUInt16LE } from '../readUInt.js';
 
 const TYPE_ICON = 1;
 

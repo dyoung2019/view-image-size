@@ -1,22 +1,14 @@
-import imageSize from '../src/index';
-import toAscii from './toAscii';
-import detectImageType from '../src/detectImageType';
-import setupView from './setupView'
-import validateJPG from '../src/types/validateJPG';
+const toAscii = require('./toAscii');
+const {default: detectImageType} = require('../build/detectImageType.js');
+const {default: validateJPG} = require('../build/types/validateJPG.js');
+const setupView = require('./setupView');
+const {default: imageSize} = require('../build/imageSize.js');
 
 describe('jpg test files', () => {
   // Inputs - fileName, path, 
   // Outputs - ... imageType, dims
-  type TestElement = [
-    testFilePath: string,
-    bufferSize: number,
-    imageType: string,
-    markerValue: number,
-    markerId: string,
-    result: any,
-  ]
 
-  const testCases: TestElement[]  = [
+  const testCases  = [
     [
       'specs/images/valid/jpg/1x2-flipped-big-endian.jpg',
       1024,

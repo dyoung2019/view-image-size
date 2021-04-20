@@ -1,5 +1,5 @@
-import type { ISizeCalculationResult } from './types/interface';
-import type { TiffTagLookup } from './types/tiffHelpers';
+import type { ISizeCalculationResult } from './types/interface.js';
+import type { TiffTagLookup } from './types/tiffHelpers.js';
 import {
   getIdfOffsetLocation,
   getIdfOffset,
@@ -11,7 +11,7 @@ import {
   endIndexForIdf,
   TIFF_IDF_COUNT_STRIDE,
   TIFF_IDF_OFFSET_SIZE
-} from './types/tiffHelpers';
+} from './types/tiffHelpers.js';
 
 const moveToIdfCount = (
   pos: number,

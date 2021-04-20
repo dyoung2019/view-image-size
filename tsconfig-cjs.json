@@ -1,11 +1,25 @@
 {
-  "extends": "./tsconfig-base.json",
   "include": [
     "src"
   ],
+  "exclude": [
+    "./node_modules/*",
+    "./build/*",
+    "./dist/*",
+    "./lib/**/*",
+    "./lib/*",
+    "./types/**",
+    "./specs/**"
+  ],
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "ES2020",
-    "outDir": "./lib/cjs",
+    "moduleResolution": "node",
+    "target": "ES2015",
+    "module": "CommonJs",
+    "outDir": "./build",
+    // "rootDir": "./src",
+    "strict": true,
+    "alwaysStrict": true,
+    // "strict": true,
+    "esModuleInterop": true
   }
 }

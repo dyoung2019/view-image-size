@@ -1,27 +1,27 @@
 {
   "name": "view-image-size",
   "exports": {
-    ".": {
-      "import": "./lib/index.js",
-      "require": "./dist/index.js"
-    }
+    ".": "./dist/index.js",
+    "./es6": "./lib/index.js"
   },
   "types": "./types/index.d.ts",
-  "version": "1.0.1",
-  "description": "fork of get dimensions of an image file",
+  "version": "2.0.0",
+  "description": "An in-browser module to get dimensions (i.e. width, height, type) of an image file (by using a DataView).",
   "files": [
     "dist/*",
     "lib/**",
     "types/*"
   ],
   "scripts": {
-    "build": "npm run build:es6 && npm run build:wp && npm run deploy:cjs",
-    "build:wp": "webpack",
+    "build": "npm run build:es6 && npm run build:cjs && npm run deploy:cjs",
     "build:es6": "tsc -p tsconfig-mjs.json && node ./deploy/copy-mjs.js",
+    "build:cjs": "tsc -p tsconfig-cjs.json && webpack",
+    "compress:cjs": "uglifyjs-folder ./build -o dist/view-sizew.js",
     "deploy:cjs": "node ./deploy/copy-cjs.js",
     "format": "prettier --write \"src/**/*.{ts,js}\"",
     "lint": "prettier --check \"src/**/*.{ts,js}\"",
-    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test": "npm run build:cjs && jest",
+    "test:vm": "node --experimental-vm-modules node_modules/.bin/jest",
     "clean": "npm run clean:es6 && npm run clean:lib",
     "clean:lib": "node ./deploy/delete-lib.js",
     "clean:es6": "tsc --build --clean tsconfig-mjs.json",
@@ -59,6 +59,8 @@
     "ts-jest": "^26.5.4",
     "ts-loader": "^8.1.0",
     "typescript": "^4.2.4",
+    "uglify-js": "^3.13.4",
+    "uglifyjs-folder": "^2.0.0",
     "webpack": "^5.33.2",
     "webpack-cli": "^4.6.0"
   }

@@ -1,6 +1,6 @@
-import type { IImage, ISize } from './interface';
-import { readUInt32BE, readUInt16BE } from '../readUInt';
-import toHexadecimal from '../toHexadecimal';
+import type { IImage, ISize } from './interface.js';
+import { readUInt32BE, readUInt16BE } from '../readUInt.js';
+import toHexadecimal from '../toHexadecimal.js';
 
 const BoxTypes = {
   ftyp: '66747970',

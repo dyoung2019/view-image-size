@@ -1,5 +1,5 @@
-import type { IImage } from './interface';
-import { readUInt16LE } from '../readUInt';
+import type { IImage } from './interface.js';
+import { readUInt16LE } from '../readUInt.js';
 
 const gifRegexp = /^GIF8[79]a/;
 /** @internal */

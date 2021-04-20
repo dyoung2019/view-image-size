@@ -1,18 +1,13 @@
-import imageSize from '../src/index';
-import toAscii from './toAscii';
-import detectImageType from '../src/detectImageType';
-import setupView from './setupView'
+const toAscii = require('./toAscii');
+const {default: detectImageType} = require('../build/detectImageType.js');
+const setupView = require('./setupView');
+const {default: imageSize} = require('../build/imageSize.js');
 
 describe('png mjs test files', () => {
   // Inputs - fileName, path, 
   // Outputs - ... imageType, dims
-  type TestElement = [
-    testFilePath: string,
-    imageType: string,
-    result: any,
-  ]
 
-  const testCases: TestElement[]  = [
+  const testCases  = [
     [
       'specs/images/valid/png/sample.png',
       'png', 

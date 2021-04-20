@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/view-image-size.svg)](https://badge.fury.io/js/view-image-size)
 
-A in-browser module to get dimensions (i.e. width, height, type) of an image file (by using a DataView).
+An in-browser module to get dimensions (i.e. width, height, type) of an image file (by using a DataView).
 
 common.js & es6 module supported
 
@@ -90,10 +90,27 @@ export default function viewTiffImage(
 
 ### Node 
 
->  Example 1 (imageSize / es6)
+>  Example 1 (js / commonjs)
+
+````js
+import { imageSize } from 'view-image-size/es6';
+
+function toAscii(view, begin, end) {
+  return Buffer.from(view.buffer).toString('ascii', begin, end);
+}
+
+// load image into ArrayBuffer
+const view = new DataView( /** ... ***/ );
+const result = imageSize(view, toAscii);
+
+// { height: 100, width: 100, type: 'jpg' }
+console.log(result);
+````
+
+>  Example 2 (typescript / es6)
 
 ````typescript
-import imageSize from 'view-image-size';
+import { imageSize } from 'view-image-size/es6';
 
 export default function toAscii(view: DataView, begin: number, end: number): string {
   return Buffer.from(view.buffer).toString('ascii', begin, end);
@@ -101,18 +118,21 @@ export default function toAscii(view: DataView, begin: number, end: number): str
 
 // load image into ArrayBuffer
 const view = new DataView( ... );
-const actual = imageSize(view, toAscii);
+const result = imageSize(view, toAscii);
+
+// { height: 100, width: 100, type: 'jpg' }
+console.log(result);
 
 ````
 
->  Example 2 (tiff / es6)
+>  Example 3 - loading a tiff image (typescript / es6)
 
 ````typescript
 import { 
   imageSize, 
   detectImageType,
   isTiffBigEndian
-} from 'view-image-size';
+} from 'view-image-size/es6';
 
 const toAscii = (view: DataView, begin: number, end: number) :string => {
   return Buffer.from(view.buffer).toString('ascii', begin, end);

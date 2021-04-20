@@ -1,5 +1,5 @@
-import type { IImage, ToAsciiCallback } from './interface';
-import { readInt32LE, readUInt32LE } from '../readUInt';
+import type { IImage, ToAsciiCallback } from './interface.js';
+import { readInt32LE, readUInt32LE } from '../readUInt.js';
 
 /** @internal */
 export const BMP: IImage = {

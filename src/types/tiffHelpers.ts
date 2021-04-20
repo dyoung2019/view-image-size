@@ -1,4 +1,4 @@
-import { readUInt16, readUInt32 } from '../readUInt';
+import { readUInt16, readUInt32 } from '../readUInt.js';
 
 /** @internal */
 export type TiffTagLookup = { [key: number]: number };

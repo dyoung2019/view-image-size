@@ -1,5 +1,5 @@
-import type { imageType } from './types/imageType';
-import type { ToAsciiCallback } from './types/interface';
+import type { imageType } from './types/imageType.js';
+import type { ToAsciiCallback } from './types/interface.js';
 /**
  * detect the image type
  *
