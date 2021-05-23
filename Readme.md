@@ -89,12 +89,14 @@ export default function viewTiffImage(
 
 ## Examples 
 
+See more examples [here](https://github.com/dyoung2019/view-image-size-node-demo)
+
 ### Node 
 
 >  Example 1 (js / commonjs)
 
 ````js
-import { imageSize } from 'view-image-size/es6';
+const vis = require('view-image-size');
 
 function toAscii(view, begin, end) {
   return Buffer.from(view.buffer).toString('ascii', begin, end);
@@ -102,7 +104,7 @@ function toAscii(view, begin, end) {
 
 // load image into ArrayBuffer
 const view = new DataView( /** ... ***/ );
-const result = imageSize(view, toAscii);
+const result = vis.imageSize(view, toAscii);
 
 // { height: 100, width: 100, type: 'jpg' }
 console.log(result);
